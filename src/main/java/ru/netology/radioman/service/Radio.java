@@ -1,5 +1,12 @@
 package ru.netology.radioman.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
 
     private int numberRadioStations = 10;
@@ -11,68 +18,65 @@ public class Radio {
     private int maxSoundVolume = 100;
     private int soundVolume = minSoundVolume;
 
-    public Radio(int numberRadioStations) {
-        maxNumberRadioStation = numberRadioStations - 1;
-    }
-
     public Radio() {
-
     }
 
-    // Радиостанции
-    public void setToMaxNumberRadioStation() {
-        numberCurrentRadioStation = maxNumberRadioStation;
+    public Radio(int numberRadioStations, int minNumberRadioStation, int maxNumberRadioStation, int numberCurrentRadioStation, int minSoundVolume, int maxSoundVolume, int soundVolume) {
+        this.numberRadioStations = numberRadioStations;
+        this.minNumberRadioStation = minNumberRadioStation;
+        this.maxNumberRadioStation = maxNumberRadioStation;
+        this.numberCurrentRadioStation = numberCurrentRadioStation;
+        this.minSoundVolume = minSoundVolume;
+        this.maxSoundVolume = maxSoundVolume;
+        this.soundVolume = soundVolume;
     }
 
-    public void setToMinNumberRadioStation() {
-        numberCurrentRadioStation = minNumberRadioStation;
+    public int getNumberRadioStations() {
+        return numberRadioStations;
     }
 
-    public int getNumberCurrentRadioStation() {
-        return numberCurrentRadioStation;
+    public void setNumberRadioStations(int numberRadioStations) {
+        this.numberRadioStations = numberRadioStations;
     }
 
     public int getMinNumberRadioStation() {
         return minNumberRadioStation;
     }
 
+    public void setMinNumberRadioStation(int minNumberRadioStation) {
+        this.minNumberRadioStation = minNumberRadioStation;
+    }
+
     public int getMaxNumberRadioStation() {
         return maxNumberRadioStation;
     }
 
+    public void setMaxNumberRadioStation(int maxNumberRadioStation) {
+        this.maxNumberRadioStation = maxNumberRadioStation;
+    }
+
+    public int getNumberCurrentRadioStation() {
+        return numberCurrentRadioStation;
+    }
+
     public void setNumberCurrentRadioStation(int numberCurrentRadioStation) {
-        if (numberCurrentRadioStation < minNumberRadioStation) {
-            return;
-        }
-        if (numberCurrentRadioStation > maxNumberRadioStation) {
-            return;
-        }
         this.numberCurrentRadioStation = numberCurrentRadioStation;
     }
 
-    public void nextNumberCurrentRadioStation() {
-        if (numberCurrentRadioStation < maxNumberRadioStation) {
-            numberCurrentRadioStation = numberCurrentRadioStation + 1;
-        } else {
-            numberCurrentRadioStation = minNumberRadioStation;
-        }
+    public int getMinSoundVolume() {
+        return minSoundVolume;
     }
 
-    public void prevNumberCurrentRadioStation() {
-        if (numberCurrentRadioStation > minNumberRadioStation) {
-            numberCurrentRadioStation = numberCurrentRadioStation - 1;
-        } else {
-            numberCurrentRadioStation = maxNumberRadioStation;
-        }
+    public void setMinSoundVolume(int minSoundVolume) {
+        this.minSoundVolume = minSoundVolume;
     }
 
-    // Громкость
-    public void setToMaxSoundVolume() {
-        soundVolume = maxSoundVolume;
+    public int getMaxSoundVolume() {
+        return maxSoundVolume;
     }
 
-    public void setToMinSoundVolume() {
-        soundVolume = minSoundVolume;
+    public void setMaxSoundVolume(int maxSoundVolume) {
+        this.maxSoundVolume = maxSoundVolume;
     }
 
     public int getSoundVolume() {
@@ -80,28 +84,6 @@ public class Radio {
     }
 
     public void setSoundVolume(int soundVolume) {
-        if (soundVolume < minSoundVolume) {
-            soundVolume = minSoundVolume;
-        }
-        if (soundVolume > maxSoundVolume) {
-            soundVolume = maxSoundVolume;
-        }
         this.soundVolume = soundVolume;
-    }
-
-    public void increaseSoundVolume() {
-        if (soundVolume < maxSoundVolume) {
-            soundVolume = soundVolume + 1;
-        } else {
-            soundVolume = maxSoundVolume;
-        }
-    }
-
-    public void decreaseSoundVolume() {
-        if (soundVolume > minSoundVolume) {
-            soundVolume = soundVolume - 1;
-        } else {
-            soundVolume = minSoundVolume;
-        }
     }
 }
