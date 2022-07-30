@@ -1,5 +1,11 @@
 package ru.netology.radioman.service;
 
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Radio {
 
     private int numberRadioStations = 10;
@@ -15,10 +21,6 @@ public class Radio {
         maxNumberRadioStation = numberRadioStations - 1;
     }
 
-    public Radio() {
-
-    }
-
     // Радиостанции
     public void setToMaxNumberRadioStation() {
         numberCurrentRadioStation = maxNumberRadioStation;
@@ -26,28 +28,6 @@ public class Radio {
 
     public void setToMinNumberRadioStation() {
         numberCurrentRadioStation = minNumberRadioStation;
-    }
-
-    public int getNumberCurrentRadioStation() {
-        return numberCurrentRadioStation;
-    }
-
-    public int getMinNumberRadioStation() {
-        return minNumberRadioStation;
-    }
-
-    public int getMaxNumberRadioStation() {
-        return maxNumberRadioStation;
-    }
-
-    public void setNumberCurrentRadioStation(int numberCurrentRadioStation) {
-        if (numberCurrentRadioStation < minNumberRadioStation) {
-            return;
-        }
-        if (numberCurrentRadioStation > maxNumberRadioStation) {
-            return;
-        }
-        this.numberCurrentRadioStation = numberCurrentRadioStation;
     }
 
     public void nextNumberCurrentRadioStation() {
@@ -73,20 +53,6 @@ public class Radio {
 
     public void setToMinSoundVolume() {
         soundVolume = minSoundVolume;
-    }
-
-    public int getSoundVolume() {
-        return soundVolume;
-    }
-
-    public void setSoundVolume(int soundVolume) {
-        if (soundVolume < minSoundVolume) {
-            soundVolume = minSoundVolume;
-        }
-        if (soundVolume > maxSoundVolume) {
-            soundVolume = maxSoundVolume;
-        }
-        this.soundVolume = soundVolume;
     }
 
     public void increaseSoundVolume() {
