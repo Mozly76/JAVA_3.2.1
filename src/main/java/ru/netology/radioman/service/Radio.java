@@ -1,84 +1,73 @@
 package ru.netology.radioman.service;
 
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Radio {
-    private int numberCurrentRadioStation;
-    private int soundVolume;
+
+    private int numberRadioStations = 10;
+    private int minNumberRadioStation = 0;
+    private int maxNumberRadioStation = 9;
+    private int numberCurrentRadioStation = minNumberRadioStation;
+
+    private int minSoundVolume = 0;
+    private int maxSoundVolume = 100;
+    private int soundVolume = minSoundVolume;
+
+    public Radio(int numberRadioStations) {
+        maxNumberRadioStation = numberRadioStations - 1;
+    }
 
     // Радиостанции
     public void setToMaxNumberRadioStation() {
-        numberCurrentRadioStation = 9;
+        numberCurrentRadioStation = maxNumberRadioStation;
     }
 
     public void setToMinNumberRadioStation() {
-        numberCurrentRadioStation = 0;
-    }
-
-    public int getNumberCurrentRadioStation() {
-        return numberCurrentRadioStation;
-    }
-
-    public void setNumberCurrentRadioStation(int newNumberCurrentRadioStation) {
-        if (newNumberCurrentRadioStation < 0) {
-            return;
-        }
-        if (newNumberCurrentRadioStation > 9) {
-            return;
-        }
-        numberCurrentRadioStation = newNumberCurrentRadioStation;
+        numberCurrentRadioStation = minNumberRadioStation;
     }
 
     public void nextNumberCurrentRadioStation() {
-        if (numberCurrentRadioStation < 9) {
+        if (numberCurrentRadioStation < maxNumberRadioStation) {
             numberCurrentRadioStation = numberCurrentRadioStation + 1;
         } else {
-            numberCurrentRadioStation = 0;
+            numberCurrentRadioStation = minNumberRadioStation;
         }
     }
 
     public void prevNumberCurrentRadioStation() {
-        if (numberCurrentRadioStation > 0) {
+        if (numberCurrentRadioStation > minNumberRadioStation) {
             numberCurrentRadioStation = numberCurrentRadioStation - 1;
         } else {
-            numberCurrentRadioStation = 9;
+            numberCurrentRadioStation = maxNumberRadioStation;
         }
     }
 
     // Громкость
     public void setToMaxSoundVolume() {
-        soundVolume = 10;
+        soundVolume = maxSoundVolume;
     }
 
     public void setToMinSoundVolume() {
-        soundVolume = 0;
-    }
-
-    public int getSoundVolume() {
-        return soundVolume;
-    }
-
-    public void setSoundVolume(int newSoundVolume) {
-        if (newSoundVolume < 0) {
-            newSoundVolume = 0;
-        }
-        if (newSoundVolume > 10) {
-            newSoundVolume = 10;
-        }
-        soundVolume = newSoundVolume;
+        soundVolume = minSoundVolume;
     }
 
     public void increaseSoundVolume() {
-        if (soundVolume < 10) {
+        if (soundVolume < maxSoundVolume) {
             soundVolume = soundVolume + 1;
         } else {
-            soundVolume = 10;
+            soundVolume = maxSoundVolume;
         }
     }
 
     public void decreaseSoundVolume() {
-        if (soundVolume > 0) {
+        if (soundVolume > minSoundVolume) {
             soundVolume = soundVolume - 1;
         } else {
-            soundVolume = 0;
+            soundVolume = minSoundVolume;
         }
     }
 }
